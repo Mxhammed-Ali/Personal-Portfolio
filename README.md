@@ -117,7 +117,7 @@ Mohammed Ali Abdul Basheer
 ## 🙏 Acknowledgments
 
 - Design inspiration from modern portfolio trends
-- Built with [Lovable](https://lovable.dev)
+-
 - Icons by [Lucide](https://lucide.dev)
 - UI components by [Shadcn/ui](https://ui.shadcn.com)
 
