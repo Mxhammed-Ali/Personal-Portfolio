@@ -29,7 +29,7 @@ interface FluidGlassNavbarProps {
 export default function FluidGlassNavbar({
   navItems = [
     { label: 'Home', link: '#home' },
-    { label: 'More', link: '#bento' },
+    { label: 'Breif', link: '#bento' },
     { label: 'Experience', link: '#experience' },
     { label: 'Projects', link: '#projects' },
     { label: 'Education', link: '#education' }

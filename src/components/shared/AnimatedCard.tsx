@@ -84,6 +84,7 @@ export const AnimatedCard = ({
     <motion.div
       ref={ref}
       key={key}
+      className="h-full"
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       whileHover={{ scale: hoverScale }}
@@ -97,7 +98,7 @@ export const AnimatedCard = ({
       }}
     >
       <Card className={cn(
-        "bg-card/50 backdrop-blur-sm border-border/50 hover:border-border transition-all",
+        "bg-card/50 backdrop-blur-sm border-border/50 hover:border-border transition-all h-full",
         className
       )}>
         {children}

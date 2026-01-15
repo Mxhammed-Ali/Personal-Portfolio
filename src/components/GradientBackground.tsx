@@ -11,12 +11,13 @@ export const GradientBackground = () => {
     let curY = 0;
     let tgX = 0;
     let tgY = 0;
+    let animationId: number;
 
     const move = () => {
       curX += (tgX - curX) / 20;
       curY += (tgY - curY) / 20;
       interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-      requestAnimationFrame(move);
+      animationId = requestAnimationFrame(move);
     };
 
     const handleMouseMove = (event: MouseEvent) => {
@@ -29,35 +30,16 @@ export const GradientBackground = () => {
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationId);
     };
   }, []);
 
   return (
     <div className="gradient-bg-container">
-      <svg xmlns="http://www.w3.org/2000/svg" className="gradient-svg">
-        <defs>
-          <filter id="goo">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-              result="goo"
-            />
-            <feBlend in="SourceGraphic" in2="goo" />
-          </filter>
-        </defs>
-      </svg>
-      <div className="gradients-container">
+      <div className="gradients-container-simple">
         <div className="g1"></div>
         <div className="g2"></div>
         <div className="g3"></div>
-        <div className="g4"></div>
-        <div className="g5"></div>
-        <div className="g6"></div>
-        <div className="g7"></div>
-        <div className="g8"></div>
-        <div className="g9"></div>
         <div className="interactive" ref={interactiveRef}></div>
       </div>
     </div>

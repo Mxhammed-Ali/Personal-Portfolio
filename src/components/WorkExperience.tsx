@@ -21,7 +21,16 @@ const workExperience: WorkItem[] = [
     duration: "Jun 2025 - Aug 2025",
     description: "Developed enterprise-grade web applications including a Cost Optimization Revenue Enhancement Platform with React, Next.js, and FastAPI. Built a mobile-first Leave Management System for frontline workforce with device-level security and role-based approvals. Architected CI/CD pipelines to streamline deployment processes.",
     technologies: ["React", "Next.js", "FastAPI", "Azure", "SQL", "MySQL", "Python", "Entra ID"],
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"]
+    images: [
+      "/assets/Work/intern 1/intern1-dashboard.png",
+      "/assets/Work/intern 1/intern1-analytics.png",
+      "/assets/Work/intern 1/intern1-reports.png",
+      "/assets/Work/intern 1/intern1-settings.png",
+      "/assets/Work/intern 1/intern1-interface-1.png",
+      "/assets/Work/intern 1/intern1-interface-2.png",
+      "/assets/Work/intern 1/intern1-interface-3.png"
+    ],
+    copyright: "© All rights reserved. Work completed during internship at GulfTainer. All intellectual property rights belong to GulfTainer."
   },
   {
     id: "2",
@@ -31,7 +40,15 @@ const workExperience: WorkItem[] = [
     duration: "Jun 2024 - Sep 2024",
     description: "Designed, implemented and deployed over 6+ custom fullstack websites tailored to individual client needs. Helped train and deploy a proprietary Python-based deep learning model for network latency optimization. Led individual projects from gathering client requirements to cloud deployments.",
     technologies: ["Python", "HTML", "CSS", "JavaScript", "cPanel", "WordPress", "Elementor"],
-    images: ["/placeholder.svg", "/placeholder.svg"]
+    images: [
+      "/assets/Work/intern 2/intern2-interface-4.png",
+      "/assets/Work/intern 2/intern2-dashboard.png",
+      "/assets/Work/intern 2/intern2-interface-1.png",
+      "/assets/Work/intern 2/intern2-interface-2.png",
+      "/assets/Work/intern 2/intern2-interface-3.png",
+      
+    ],
+    copyright: "© All rights reserved. Work completed during internship at EzeeTech. All intellectual property rights belong to EzeeTech."
   }
 ];
 
@@ -86,27 +103,67 @@ export const WorkExperience = () => {
                       </Badge>
                     ))}
                   </div>
+
+                  {work.copyright && (
+                    <div className="pt-3 border-t border-border/30 mt-3">
+                      <p className="text-xs text-muted-foreground/70 italic">
+                        {work.copyright}
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 {/* Image Carousel */}
                 <div className="relative order-1 lg:order-2">
                   <Carousel className="w-full">
                     <CarouselContent>
-                      {work.images.map((image, idx) => (
-                        <CarouselItem key={idx}>
-                          <motion.div 
-                            className="aspect-video rounded-lg overflow-hidden bg-secondary/30"
-                            whileHover={{ scale: 1.02 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <img 
-                              src={image} 
-                              alt={`${work.company} project ${idx + 1}`}
-                              className="w-full h-full object-cover"
-                            />
-                          </motion.div>
-                        </CarouselItem>
-                      ))}
+                      {work.id === "1" ? (
+                        // Group vertical images in pairs for Intern 1
+                        Array.from({ length: Math.ceil(work.images.length / 2) }, (_, pairIdx) => {
+                          const img1 = work.images[pairIdx * 2];
+                          const img2 = work.images[pairIdx * 2 + 1];
+                          return (
+                            <CarouselItem key={pairIdx}>
+                              <div className="aspect-[5/3] bg-secondary/30 rounded-lg overflow-hidden flex items-center justify-center gap-2 p-2">
+                                <motion.img 
+                                  src={img1} 
+                                  alt={`${work.company} project ${pairIdx * 2 + 1}`}
+                                  className="h-full w-auto object-contain"
+                                  initial={{ scale: 1 }}
+                                  whileHover={{ scale: 1.05 }}
+                                  transition={{ duration: 0.3 }}
+                                />
+                                {img2 && (
+                                  <motion.img 
+                                    src={img2} 
+                                    alt={`${work.company} project ${pairIdx * 2 + 2}`}
+                                    className="h-full w-auto object-contain"
+                                    initial={{ scale: 1 }}
+                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ duration: 0.3 }}
+                                  />
+                                )}
+                              </div>
+                            </CarouselItem>
+                          );
+                        })
+                      ) : (
+                        // Regular single image per slide
+                        work.images.map((image, idx) => (
+                          <CarouselItem key={idx}>
+                            <div className="aspect-[5/3] bg-secondary/30 rounded-lg overflow-hidden flex items-center justify-center">
+                              <motion.img 
+                                src={image} 
+                                alt={`${work.company} project ${idx + 1}`}
+                                className="max-w-full max-h-full object-contain"
+                                initial={{ scale: 1 }}
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.3 }}
+                              />
+                            </div>
+                          </CarouselItem>
+                        ))
+                      )}
                     </CarouselContent>
                     <CarouselPrevious className="left-1 sm:left-2 bg-background/80 backdrop-blur-sm h-8 w-8 sm:h-10 sm:w-10" />
                     <CarouselNext className="right-1 sm:right-2 bg-background/80 backdrop-blur-sm h-8 w-8 sm:h-10 sm:w-10" />

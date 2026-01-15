@@ -73,10 +73,10 @@ All colors MUST be HSL.
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 3.75rem; /* 60px */
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    border-radius: 1.125rem; /* 18px - slightly rounded squircle */
+    height: 2.75rem; /* 44px - smaller for mobile */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 0.875rem; /* 14px - slightly rounded squircle */
     color: hsl(var(--foreground)) !important;
     transform: translate(0, 0) skew(-4deg, 0deg); /* More slanted parallelogram */
     transition: transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1); /* Even slower bounce-back */
@@ -86,6 +86,26 @@ All colors MUST be HSL.
     font-weight: 500;
     z-index: 10; /* High z-index to ensure text is visible above pseudo-elements */
   }
+  
+  /* Responsive sizing for larger screens */
+  @media (min-width: 640px) {
+    .keycap {
+      height: 3.25rem; /* 52px */
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      border-radius: 1rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .keycap {
+      height: 3.75rem; /* 60px */
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      border-radius: 1.125rem;
+    }
+  }
+  
   /* Ensure content (icons and text) is above everything */
   .keycap > * {
     position: relative;
@@ -109,7 +129,7 @@ All colors MUST be HSL.
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 1.125rem; /* Match keycap radius for smooth corners */
+    border-radius: 0.875rem; /* Match keycap radius for smooth corners */
     /* Lighter box on bottom-right - behind */
     background: linear-gradient(145deg, 
       hsl(220 30% 24%) 0%,
@@ -123,12 +143,25 @@ All colors MUST be HSL.
       0 12px 28px rgba(0, 0, 0, 0.6),
       0 4px 12px rgba(0, 0, 0, 0.4);
   }
+  
+  @media (min-width: 640px) {
+    .keycap::before {
+      border-radius: 1rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .keycap::before {
+      border-radius: 1.125rem;
+    }
+  }
+  
   /* Dark keycap face - in front */
   .keycap::after {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 1.125rem;
+    border-radius: 0.875rem;
     /* Dark box on top-left - in front */
     background: linear-gradient(145deg, 
       hsl(220 26% 16%) 0%,
@@ -144,6 +177,19 @@ All colors MUST be HSL.
     z-index: 1; /* Above base */
     pointer-events: none; /* Allow clicks through to keycap */
   }
+  
+  @media (min-width: 640px) {
+    .keycap::after {
+      border-radius: 1rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .keycap::after {
+      border-radius: 1.125rem;
+    }
+  }
+  
   .keycap:hover::before { 
     transform: translate(8px, 8px) skew(-4deg, 0deg); /* base moves closer on hover */
   }
@@ -151,14 +197,58 @@ All colors MUST be HSL.
     transform: translate(4px, 4px) skew(-4deg, 0deg); /* base moves even closer on press */
   }
   .keycap--icon {
-    width: 3.75rem; /* square */
+    width: 2.75rem; /* square - mobile */
     padding: 0;
   }
+  
+  @media (min-width: 640px) {
+    .keycap--icon {
+      width: 3.25rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .keycap--icon {
+      width: 3.75rem;
+    }
+  }
+  
+  .keycap--icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  @media (min-width: 640px) {
+    .keycap--icon svg {
+      width: 1.375rem;
+      height: 1.375rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .keycap--icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  
   .keycap--cta {
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+  }
+  
+  @media (min-width: 640px) {
+    .keycap--cta {
+      font-size: 0.8125rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .keycap--cta {
+      font-size: 0.875rem;
+    }
   }
 }
 
@@ -208,6 +298,14 @@ All colors MUST be HSL.
     height: 100%;
   }
 
+  /* Simplified gradient container - better performance */
+  .gradients-container-simple {
+    filter: blur(40px);
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+  }
+
   /* Gradient bubble colors - reduced brightness and opacity */
   .g1,
   .g2,
@@ -237,7 +335,7 @@ All colors MUST be HSL.
     top: calc(50% - 30%);
     left: calc(50% - 30%);
     transform-origin: center center;
-    animation: moveVertical 30s ease-in-out infinite, morphShape1 25s ease-in-out infinite;
+    animation: moveVertical 30s ease-in-out infinite;
   }
 
   /* Vibrant cyan - accent color */
@@ -253,7 +351,7 @@ All colors MUST be HSL.
     top: calc(50% - 30%);
     left: calc(50% - 30%);
     transform-origin: calc(50% - 400px);
-    animation: moveInCircle 20s reverse ease-in-out infinite, morphShape2 22s ease-in-out infinite;
+    animation: moveInCircle 25s reverse ease-in-out infinite;
   }
 
   /* Vibrant green-teal */
@@ -269,7 +367,7 @@ All colors MUST be HSL.
     top: calc(50% - 30% + 200px);
     left: calc(50% - 30% - 500px);
     transform-origin: calc(50% + 400px);
-    animation: lavaFloat 40s ease-in-out infinite, morphShape3 35s ease-in-out infinite;
+    animation: moveHorizontal 35s ease-in-out infinite;
   }
 
   /* Vibrant blue-teal */

@@ -87,10 +87,10 @@ export const Hero = () => {
             transition={{ delay: 1.1 }}
           >
             <a 
-              href="#experience"
+              href="#projects"
               className="keycap keycap--cta tracking-[0.22em] uppercase select-none"
             >
-              <span>Explore more</span>
+              <span>Explore Projects</span>
             </a>
           </motion.div>
         </motion.div>

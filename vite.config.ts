@@ -7,7 +7,7 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   // Set base to your repository name for GitHub Pages
   // Change 'your-repo-name' to your actual repository name
-  base: mode === 'production' ? '/Personal-portfolio/' : '/',
+  base: mode === 'production' ? '/Personal-Portfolio/' : '/',
   server: {
     host: "::",
     port: 8080,

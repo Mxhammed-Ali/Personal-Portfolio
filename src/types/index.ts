@@ -9,6 +9,8 @@ export interface WorkItem {
   description: string;
   technologies: string[];
   images: string[];
+  pdfUrl?: string;
+  copyright?: string;
 }
 
 export interface Project {
@@ -20,8 +22,10 @@ export interface Project {
   technologies: string[];
   githubUrl?: string;
   demoUrl?: string;
+  pdfUrl?: string;
   image?: string;
   images?: string[];
+  copyright?: string;
 }
 
 export interface EducationItem {
