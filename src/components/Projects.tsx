@@ -12,6 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import type { Project } from "@/types";
+import { getAssetPath } from "@/lib/assets";
 
 const personalProjects: Project[] = [
   {
@@ -256,22 +257,18 @@ export const Projects = () => {
                     return (
                       <CarouselItem key={pairIdx}>
                         <div className="aspect-[5/3] bg-gradient-to-br from-primary/20 to-accent/20 relative overflow-hidden flex items-center justify-center gap-2 p-2">
-                          <motion.img 
-                            src={img1} 
+                          <img 
+                            src={getAssetPath(img1)} 
                             alt={`${project.title} ${pairIdx * 2 + 1}`}
                             className="h-full w-auto object-contain"
-                            initial={{ scale: 1 }}
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.3 }}
+                            loading="lazy"
                           />
                           {img2 && (
-                            <motion.img 
-                              src={img2} 
+                            <img 
+                              src={getAssetPath(img2)} 
                               alt={`${project.title} ${pairIdx * 2 + 2}`}
                               className="h-full w-auto object-contain"
-                              initial={{ scale: 1 }}
-                              whileHover={{ scale: 1.05 }}
-                              transition={{ duration: 0.3 }}
+                              loading="lazy"
                             />
                           )}
                         </div>
@@ -283,13 +280,11 @@ export const Projects = () => {
                   project.images.map((image, idx) => (
                     <CarouselItem key={idx}>
                       <div className="aspect-[5/3] bg-gradient-to-br from-primary/20 to-accent/20 relative overflow-hidden flex items-center justify-center">
-                        <motion.img 
-                          src={image} 
+                        <img 
+                          src={getAssetPath(image)} 
                           alt={`${project.title} ${idx + 1}`}
                           className="max-w-full max-h-full object-contain"
-                          initial={{ scale: 1 }}
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.3 }}
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -344,7 +339,7 @@ export const Projects = () => {
                 className="rounded-full border-border/50 hover:bg-secondary/50 text-xs sm:text-sm"
                 asChild
               >
-                <a href={project.pdfUrl} target="_blank" rel="noopener noreferrer">
+                <a href={getAssetPath(project.pdfUrl)} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                   Report
                 </a>

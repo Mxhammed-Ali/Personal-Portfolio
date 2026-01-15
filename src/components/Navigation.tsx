@@ -4,17 +4,25 @@ import { Home, Briefcase, FolderGit2, GraduationCap, Grid3x3 } from "lucide-reac
 import type { NavItem } from "@/types";
 
 const navItems: NavItem[] = [
-  { id: "home", href: "#home", icon: Home, label: "Home" },
-  { id: "bento", href: "#bento", icon: Grid3x3, label: "More" },
-  { id: "experience", href: "#experience", icon: Briefcase, label: "Experience" },
-  { id: "projects", href: "#projects", icon: FolderGit2, label: "Projects" },
-  { id: "education", href: "#education", icon: GraduationCap, label: "Education" }
+  { id: "home", href: "home", icon: Home, label: "Home" },
+  { id: "bento", href: "bento", icon: Grid3x3, label: "More" },
+  { id: "experience", href: "experience", icon: Briefcase, label: "Experience" },
+  { id: "projects", href: "projects", icon: FolderGit2, label: "Projects" },
+  { id: "education", href: "education", icon: GraduationCap, label: "Education" }
 ];
 
 export const Navigation = () => {
   const [mouseX, setMouseX] = useState<number | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -99,12 +107,13 @@ export const Navigation = () => {
           
           return (
             <motion.div
-              key={item.href}
+              key={item.id}
               ref={(el) => (itemRefs.current[index] = el)}
               className="relative"
             >
               <motion.a
-                href={item.href}
+                href={`#${item.href}`}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="flex flex-col items-center gap-0.5 px-1.5 py-1 sm:px-2 sm:py-1.5 md:px-3 md:py-2 rounded-full transition-colors relative z-10"
                 animate={{ 
                   y: offset

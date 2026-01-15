@@ -11,6 +11,7 @@ import {
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimatedCard } from "@/components/shared/AnimatedCard";
 import type { WorkItem } from "@/types";
+import { getAssetPath } from "@/lib/assets";
 
 const workExperience: WorkItem[] = [
   {
@@ -125,22 +126,18 @@ export const WorkExperience = () => {
                           return (
                             <CarouselItem key={pairIdx}>
                               <div className="aspect-[5/3] bg-secondary/30 rounded-lg overflow-hidden flex items-center justify-center gap-2 p-2">
-                                <motion.img 
-                                  src={img1} 
+                                <img 
+                                  src={getAssetPath(img1)} 
                                   alt={`${work.company} project ${pairIdx * 2 + 1}`}
                                   className="h-full w-auto object-contain"
-                                  initial={{ scale: 1 }}
-                                  whileHover={{ scale: 1.05 }}
-                                  transition={{ duration: 0.3 }}
+                                  loading="lazy"
                                 />
                                 {img2 && (
-                                  <motion.img 
-                                    src={img2} 
+                                  <img 
+                                    src={getAssetPath(img2)} 
                                     alt={`${work.company} project ${pairIdx * 2 + 2}`}
                                     className="h-full w-auto object-contain"
-                                    initial={{ scale: 1 }}
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.3 }}
+                                    loading="lazy"
                                   />
                                 )}
                               </div>
@@ -152,13 +149,11 @@ export const WorkExperience = () => {
                         work.images.map((image, idx) => (
                           <CarouselItem key={idx}>
                             <div className="aspect-[5/3] bg-secondary/30 rounded-lg overflow-hidden flex items-center justify-center">
-                              <motion.img 
-                                src={image} 
+                              <img 
+                                src={getAssetPath(image)} 
                                 alt={`${work.company} project ${idx + 1}`}
                                 className="max-w-full max-h-full object-contain"
-                                initial={{ scale: 1 }}
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ duration: 0.3 }}
+                                loading="lazy"
                               />
                             </div>
                           </CarouselItem>

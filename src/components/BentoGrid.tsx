@@ -4,6 +4,7 @@ import { MapPin, Gauge, Code2 } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimatedCard } from "@/components/shared/AnimatedCard";
 import { useState, useEffect, useRef } from "react";
+import { getAssetPath } from "@/lib/assets";
 
 const LocationMap = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -98,9 +99,10 @@ export const BentoGrid = () => {
             >
               <div className="w-full h-full bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center relative">
                 <img 
-                  src="/assets/Personal/4/llm-app-interface-6.png" 
+                  src={getAssetPath("/assets/Personal/4/llm-app-interface-6.png")} 
                   alt="LLM Chat App"
                   className="w-auto h-full object-contain opacity-60 hover:opacity-80 transition-opacity"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
