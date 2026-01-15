@@ -4,7 +4,7 @@ A modern, responsive portfolio website showcasing my work as a Full-Stack Develo
 
 ## 🚀 Live Demo
 
-Visit the live site: [Your GitHub Pages URL will be here]
+Visit the live site: [https://mxhammed-ali.github.io/Personal-Portfolio/](https://mxhammed-ali.github.io/Personal-Portfolio/)
 
 ## ✨ Features
 
@@ -14,6 +14,7 @@ Visit the live site: [Your GitHub Pages URL will be here]
 - **Smooth Animations** - Framer Motion powered transitions
 - **Dark Theme** - Eye-friendly dark mode interface
 - **Downloadable CV** - Direct CV download functionality
+- **Project Inquiry** - Contact button for project demos and licensing
 
 ## 🛠️ Built With
 
@@ -29,10 +30,10 @@ Visit the live site: [Your GitHub Pages URL will be here]
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR-USERNAME/Personal-portfolio.git
+git clone https://github.com/Mxhammed-Ali/Personal-Portfolio.git
 
 # Navigate to project directory
-cd Personal-portfolio
+cd Personal-Portfolio
 
 # Install dependencies
 npm install
