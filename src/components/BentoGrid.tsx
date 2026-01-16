@@ -93,8 +93,12 @@ export const BentoGrid = () => {
             <p className="text-sm sm:text-base text-muted-foreground mb-4">
               Privacy-focused local LLM chat app running entirely on-device with modern interface.
             </p>
-            <motion.a
+            <a
               href="#projects"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="block bg-secondary/30 rounded-lg overflow-hidden cursor-pointer h-[200px] mt-auto"
             >
               <div className="w-full h-full bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center relative">
@@ -106,7 +110,7 @@ export const BentoGrid = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
-            </motion.a>
+            </a>
           </AnimatedCard>
 
           <AnimatedCard delay={0.3} className="p-4 sm:p-6 flex flex-col">

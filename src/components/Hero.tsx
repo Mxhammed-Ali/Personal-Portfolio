@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Github, Linkedin, Mail, FileText } from "lucide-react";
 import type { SocialLink } from "@/types";
 import { GradientBackground } from "./GradientBackground";
+import { getAssetPath } from "@/lib/assets";
 
 const socialLinks: SocialLink[] = [
   { label: "GitHub", href: "https://github.com/Mxhammed-Ali", icon: <Github className="w-6 h-6" /> },
@@ -11,9 +12,17 @@ const socialLinks: SocialLink[] = [
   { label: "Email", href: "mailto:mohdali2112@gmail.com", icon: <Mail className="w-6 h-6" /> },
 ];
 
+const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault();
+  const element = document.getElementById('projects');
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20 overflow-hidden">
       <GradientBackground />
       <div className="relative z-10 max-w-4xl mx-auto w-full space-y-6 sm:space-y-8">
         {/* Subtle backdrop for text readability - seamlessly blended */}
@@ -69,7 +78,7 @@ export const Hero = () => {
               transition={{ delay: 0.7 + index * 0.1 }}
             >
               <a 
-                href={link.href} 
+                href={link.label === "Resume" ? getAssetPath(link.href) : link.href} 
                 target={link.href.startsWith('http') ? "_blank" : undefined}
                 rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
                 download={link.label === "Resume" ? true : undefined}
@@ -88,6 +97,7 @@ export const Hero = () => {
           >
             <a 
               href="#projects"
+              onClick={handleScrollToProjects}
               className="keycap keycap--cta tracking-[0.22em] uppercase select-none"
             >
               <span>Explore Projects</span>

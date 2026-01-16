@@ -447,7 +447,7 @@ export const Projects = () => {
               />
             </div>
             <p className="text-base sm:text-lg text-muted-foreground">
-              A showcase of my development work
+              A showcase of my development work. Contact me for a live demo or collaboration.
             </p>
           </div>
         </div>

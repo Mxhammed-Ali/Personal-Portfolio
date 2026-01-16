@@ -370,6 +370,53 @@ All colors MUST be HSL.
     animation: moveHorizontal 35s ease-in-out infinite;
   }
 
+  /* Mobile-only gradient shapes - brighter and more visible */
+  .g4-mobile {
+    display: none;
+  }
+  
+  .g5-mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .g4-mobile {
+      display: block;
+      background: radial-gradient(
+        ellipse 80% 120% at center,
+        rgba(20, 184, 166, 0.65) 0,
+        rgba(20, 184, 166, 0.25) 50%,
+        rgba(20, 184, 166, 0) 70%
+      ) no-repeat;
+      position: absolute;
+      width: 70%;
+      height: 50%;
+      top: 15%;
+      right: -20%;
+      mix-blend-mode: screen;
+      opacity: 0.85;
+      animation: moveVertical 25s ease-in-out infinite;
+    }
+    
+    .g5-mobile {
+      display: block;
+      background: radial-gradient(
+        ellipse 100% 80% at center,
+        rgba(8, 145, 178, 0.7) 0,
+        rgba(8, 145, 178, 0.3) 50%,
+        rgba(8, 145, 178, 0) 70%
+      ) no-repeat;
+      position: absolute;
+      width: 60%;
+      height: 45%;
+      bottom: 20%;
+      left: -15%;
+      mix-blend-mode: screen;
+      opacity: 0.8;
+      animation: moveInCircle 30s ease-in-out infinite;
+    }
+  }
+
   /* Vibrant blue-teal */
   .g4 {
     background: radial-gradient(

@@ -7,6 +7,9 @@ export const GradientBackground = () => {
     const interBubble = interactiveRef.current;
     if (!interBubble) return;
 
+    // Skip mouse tracking on mobile
+    if (window.innerWidth < 768) return;
+
     let curX = 0;
     let curY = 0;
     let tgX = 0;
@@ -40,6 +43,9 @@ export const GradientBackground = () => {
         <div className="g1"></div>
         <div className="g2"></div>
         <div className="g3"></div>
+        {/* Extra mobile gradient shapes */}
+        <div className="g4-mobile"></div>
+        <div className="g5-mobile"></div>
         <div className="interactive" ref={interactiveRef}></div>
       </div>
     </div>
