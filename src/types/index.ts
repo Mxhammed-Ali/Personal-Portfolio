@@ -4,12 +4,13 @@ export interface WorkItem {
   id: string;
   company: string;
   role: string;
-  type: "Internship" | "Freelance";
+  type: "Internship" | "Freelance" | "Contractual";
   duration: string;
   description: string;
   technologies: string[];
   images: string[];
   pdfUrl?: string;
+  previewUrl?: string;
   copyright?: string;
 }
 

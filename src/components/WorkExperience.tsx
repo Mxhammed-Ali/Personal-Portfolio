@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Briefcase, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Briefcase, Calendar, ExternalLink } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -14,6 +15,28 @@ import type { WorkItem } from "@/types";
 import { getAssetPath } from "@/lib/assets";
 
 const workExperience: WorkItem[] = [
+  {
+    id: "3",
+    company: "YSG",
+    role: "Full-Stack Developer",
+    type: "Contractual",
+    duration: "Sep 2025 - Mar 2026",
+    description: "Built a scalable desktop app for comprehensive camp management. Features real-time visualization of camp layout, occupancy, inventory and maintenance statistics. Architected key operational flows for check-in/check-out, inventory, utility tracking, & maintenance cycles. Optimized workflows and automated manday calculations per client with invoice generation based on actual occupancy.",
+    technologies: ["React", "Next.js", "Tauri", "SQL"],
+    images: [
+      "/assets/Personal/2/camp-dashboard-1.png",
+      "/assets/Personal/2/camp-dashboard-2.png",
+      "/assets/Personal/2/camp-inventory-1.png",
+      "/assets/Personal/2/camp-inventory-2.png",
+      "/assets/Personal/2/camp-occupancy.png",
+      "/assets/Personal/2/camp-maintenance.png",
+      "/assets/Personal/2/camp-utilities.png",
+      "/assets/Personal/2/camp-reports.png",
+      "/assets/Personal/2/camp-settings.png"
+    ],
+    previewUrl: "https://camp-landing-page-xi.vercel.app/",
+    copyright: "© All rights reserved. Work completed under contract for YSG."
+  },
   {
     id: "1",
     company: "GulfTainer",
@@ -47,7 +70,6 @@ const workExperience: WorkItem[] = [
       "/assets/Work/intern 2/intern2-interface-1.png",
       "/assets/Work/intern 2/intern2-interface-2.png",
       "/assets/Work/intern 2/intern2-interface-3.png",
-      
     ],
     copyright: "© All rights reserved. Work completed during internship at EzeeTech. All intellectual property rights belong to EzeeTech."
   }
@@ -104,6 +126,22 @@ export const WorkExperience = () => {
                       </Badge>
                     ))}
                   </div>
+
+                  {work.previewUrl && (
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="pt-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="rounded-full border-primary/50 hover:bg-primary/10 hover:border-primary text-xs sm:text-sm"
+                        asChild
+                      >
+                        <a href={work.previewUrl} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                          Preview Product
+                        </a>
+                      </Button>
+                    </motion.div>
+                  )}
 
                   {work.copyright && (
                     <div className="pt-3 border-t border-border/30 mt-3">

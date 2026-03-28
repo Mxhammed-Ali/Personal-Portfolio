@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Code2, GraduationCap, Github, ExternalLink, ChevronLeft, ChevronRight, Mail } from "lucide-react";
 import { AnimatedCard } from "@/components/shared/AnimatedCard";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -48,27 +49,6 @@ const personalProjects: Project[] = [
     technologies: ["Python", "Selenium", "Ollama", "Deepseek R1"],
     
     images: ["/assets/Personal/1/whatsapp-chatbot.png"],
-    copyright: "© All rights reserved. Personal project owned by Mohammed Ali."
-  },
-  {
-    id: "2",
-    title: "Camp Management System",
-    description: "Built a scalable desktop app for comprehensive camp management. Features real-time visualization of camp layout, occupancy, inventory and maintenance statistics. Architected key operational flows for check-in/check-out, inventory, utility tracking, & maintenance cycles. Optimized workflows leading to 10% decrease in utility costs.",
-    course: "Personal Project",
-    year: "Sep 2025 - Oct 2025",
-    technologies: ["React", "Next.js", "Tauri", "Rust", "SQLite"],
-    
-    images: [
-      "/assets/Personal/2/camp-dashboard-1.png",
-      "/assets/Personal/2/camp-dashboard-2.png",
-      "/assets/Personal/2/camp-inventory-1.png",
-      "/assets/Personal/2/camp-inventory-2.png",
-      "/assets/Personal/2/camp-occupancy.png",
-      "/assets/Personal/2/camp-maintenance.png",
-      "/assets/Personal/2/camp-utilities.png",
-      "/assets/Personal/2/camp-reports.png",
-      "/assets/Personal/2/camp-settings.png"
-    ],
     copyright: "© All rights reserved. Personal project owned by Mohammed Ali."
   },
   {
@@ -247,7 +227,13 @@ export const Projects = () => {
         {/* Project Image Carousel */}
         {project.images && project.images.length > 0 && (
           <div className="relative">
-            <Carousel className="w-full">
+            <Carousel
+              className="w-full"
+              opts={{ loop: true }}
+              plugins={[
+                Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true })
+              ]}
+            >
               <CarouselContent>
                 {hasVerticalImages ? (
                   // Group vertical images in pairs
@@ -451,7 +437,7 @@ export const Projects = () => {
             </p>
           </div>
         </div>
-
+                
         {/* Navigation Arrows - Only visible when in view */}
         {isInView && (
           <>
@@ -463,7 +449,7 @@ export const Projects = () => {
             >
               <ChevronLeft className="w-6 h-6" />
             </Button>
-
+           
             <Button
               variant="outline"
               size="icon"
